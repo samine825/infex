@@ -71,26 +71,18 @@ glyph_map = {
 }
 
 for name, codes in glyph_map.items():
-    svg_path = f"/storage/emulated/0/INFILAXY_SVGS/{name}.svg"
+    svg_path = f"/storage/emulated/0/INFILAXY_SVGS_100/{name}.svg"
     if os.path.exists(svg_path):
-        # Создаём глиф для каждого кода из массива
         for code in codes:
             glyph = font.createChar(code, f"{name}_{code}")
             glyph.importOutlines(svg_path)
-            # После цикла импорта всех глифов
-			
-		
-# После цикла импорта всех глифов
-if 32 in font:                 # глиф пробела
-    if 65 in font:             # глиф 'A' (или любой другой)
+if 32 in font:
+    if 65 in font:
         font[32].width = font[65].width
     else:
-        # Если 'A' нет, можно взять первый попавшийся глиф
         for glyph in font:
             font[32].width = glyph.width
             break
 
-
-# Экспортируем в TTF
-font.generate("infex-main-264.8.ttf")
-print("Шрифт успешно экспортирован в my_font.ttf")
+font.generate("infex-main-100.ttf")
+print("done")

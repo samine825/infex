@@ -1,7 +1,7 @@
 .p from math import *
 from PIL import Image, ImageDraw, ImageFont
 
-d =100
+d = 100
 L = 1000
 polygons = [[0,0]]*20
 
@@ -12,7 +12,7 @@ polygons[16] = [0, L]
 polygons[19] = [L, L]
 
 # 2
-gipotenuza = (L/2)*sqrt(2)
+gipotenuza = (L/2)*sqrt(2) 
 katet = d/2
 ugol = pi/2-acos(katet/gipotenuza)+pi/4
 iskomoe=L - (L/tan(ugol))
@@ -122,99 +122,77 @@ def paravozik(idx, start):
     if finded_idx == -1:
         return [start]
     return [start] + paravozik(finded_idx, remainder)
-for i in range(64):
-	number = f"{bin(23)[2:]:0>6}"
-	numlist = [int(i) for i in list(number)]
-	# линии
-	for i, k in map.items():
-	    maplines[i] = []
-	    for linenum in range(len(k)):
-	        maplines[i].append([k[linenum], k[(linenum+1)%4]])
-	# линии с определением, уникально чи н
-	maplinescategorized = {}
-	for i, k in map.items():
-	    maplinescategorized[i] = {}
-	    maplinescategorized[i]["u"] = []
-	    maplinescategorized[i]["n"] = []
-	    for linenum in range(len(k)):
-	        maplinescategorized[i]["u" if unique([k[linenum], k[(linenum+1)%4]]) else "n"].append([k[linenum], k[(linenum+1)%4]])
-	
 
-	active_elements = {i:False for i in range(0, 11)}
-	
-	#находем активные элементы (6 -> 11)
-	for idx, val in enumerate(numlist):
-	    elements = elements4num[idx]
-	    if val:
-	        for i in elements:
-	            active_elements[i] = True
-	
-	# список активных линий
-	resultus = []
-	for idx, active in active_elements.items():
-	    #print(maplinescategorized[idx])
-	    if active:
-	        resultus += maplinescategorized[idx]["u"]
-	    else:
-	        for i in maplinescategorized[idx]["n"]:
-	            for j in i:
-	                if point_in_active(j):
-	                    if i not in resultus:
-	                        resultus.append(i)
-	
-	#print(resultus)
-	
-		
-	resulted_paravozik = []
-	while resultus:
-	    subparavoz = paravozik(0, resultus[0][0])
-	    if len(subparavoz) == 3:
-	        subparavoz.reverse()
-	    resulted_paravozik.append(subparavoz)
-	
-	
-	svg_start = f'<svg width="{1000}" height="{1000}" viewBox="0 0 {1000} {1000}" xmlns="http://www.w3.org/2000/svg">\n  <path d="'
-	#M 0,0 L 200,0 L 200,200 L 0,200 Z M 50,50 L 50,150 L 150,150 L 150,50 Z
-	svg_end = '" />\n</svg>'
-	
-	
-	svg = ""
-	for i in resulted_paravozik:
-	    for num, j in enumerate(i):
-	        if num == 0:
-	            svg += "M "
-	        else:
-	            svg += "L "
-	        svg += f"{polygons[j][0]},{polygons[j][1]} "
-	    svg += "Z "
-	svg = svg_start + svg + svg_end
-	print(svg)
-	with open(f"/storage/emulated/0/{number}.svg", "w", encoding="utf-8") as file:
-	    file.write(svg)
-	
-	
-	# рендер
-	margin = 80
-	img_size = L + margin * 2
-	img = Image.new('RGB', (img_size, img_size), 'white')
-	draw = ImageDraw.Draw(img)
-	for i, (x, y) in enumerate(polygons):
-	    px = x + margin
-	    py = y + margin
-	    radius = 6
-	    draw.ellipse(
-	        (px - radius, py - radius, px + radius, py + radius),
-	        fill='red', outline='black', width=1
-	    )   
-	    draw.text((px + 8, py - 10), str(i), fill='black')
-	    coord_text = f'({int(x)},{int(y)})'
-	    draw.text((px + 8, py + 8), coord_text, fill='blue')
-	
-	for i in resultus:
-	    a = polygons[i[0]]
-	    b = polygons[i[1]]
-	    a = [iii + margin for iii in a]
-	    b = [iii + margin for iii in b]
-	    draw.line([tuple(a), tuple(b)], fill ="red", width = 10)
-	
-	print_photo(img)
+for truenumber in range(64):
+    number = f"{bin(truenumber)[2:]:0>6}"
+    numlist = [int(i) for i in list(number)]
+    # линии
+    for i, k in map.items():
+        maplines[i] = []
+        for linenum in range(len(k)):
+            maplines[i].append([k[linenum], k[(linenum+1)%4]])
+    # линии с определением, уникально чи н
+    maplinescategorized = {}
+    for i, k in map.items():
+        maplinescategorized[i] = {}
+        maplinescategorized[i]["u"] = []
+        maplinescategorized[i]["n"] = []
+        for linenum in range(len(k)):
+            maplinescategorized[i]["u" if unique([k[linenum], k[(linenum+1)%4]]) else "n"].append([k[linenum], k[(linenum+1)%4]])
+    
+
+    active_elements = {i:False for i in range(0, 11)}
+    
+    #находем активные элементы (6 -> 11)
+    for idx, val in enumerate(numlist):
+        elements = elements4num[idx]
+        if val:
+            for i in elements:
+                active_elements[i] = True
+    
+    # список активных линий
+    resultus = []
+    for idx, active in active_elements.items():
+        #print(maplinescategorized[idx])
+        if active:
+            resultus += maplinescategorized[idx]["u"]
+        else:
+            for i in maplinescategorized[idx]["n"]:
+                for j in i:
+                    if point_in_active(j):
+                        if i not in resultus:
+                            resultus.append(i)
+    
+    #print(resultus)
+    
+        
+    resulted_paravozik = []
+    while resultus:
+        subparavoz = paravozik(0, resultus[0][0])
+        if polygons[subparavoz[0]][0] > polygons[subparavoz[1]][0]:
+            subparavoz.reverse()
+        if len(subparavoz) == 3:
+            subparavoz.reverse()
+        resulted_paravozik.append(subparavoz)
+    
+    
+    svg_start = f'<svg width="{1000}" height="{1000}" viewBox="0 0 {1000} {1000}" xmlns="http://www.w3.org/2000/svg">\n  <path d="'
+    #M 0,0 L 200,0 L 200,200 L 0,200 Z M 50,50 L 50,150 L 150,150 L 150,50 Z
+    svg_end = '" />\n</svg>'
+    
+    
+    svg = ""
+    for i in resulted_paravozik:
+        for num, j in enumerate(i):
+            if num == 0:
+                svg += "M "
+            else:
+                svg += "L "
+            svg += f"{polygons[j][0]},{polygons[j][1]} "
+        svg += "Z "
+    svg = svg_start + svg + svg_end
+    with open(f"/storage/emulated/0/INFILAXY_SVGS_100/{truenumber}.svg", "w", encoding="utf-8") as file:
+        file.write(svg)
+    
+    
+    
