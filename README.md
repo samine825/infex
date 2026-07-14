@@ -3,16 +3,14 @@
 
 
 
-# Infex Font
+# Infex
 
 **Infex** a uniquely designed typeface created by me.
 
-
+# Examples
 
 ![the quick fox](infex-16px-preview.png)
 **infex-16px** — created with **infex-from-6png.py**
-
-
 
 ![the quick fox](infex-main-100-preview.png)
 **infex-main-100** — created with **infex-from-zero.py**
