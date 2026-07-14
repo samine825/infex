@@ -1,19 +1,19 @@
-# say hewwo to Infex !:3
-![infex](font-info.png)
+# Say hewwo to Infex !:3
+![infex](images/font-info.png)
 
 
 
 # Infex
 
-**Infex** a uniquely designed typeface created by me.
+**Infex** is a uniquely designed typeface created by me.
 
 # Examples
 
-![the quick fox](infex-16px-preview.png)
-**infex-16px** — created with **infex-from-6png.py**
+![the quick fox](images/infex-16px-preview.png)
+**infex-16px** — created with `infex-from-6png.py`
 
-![the quick fox](infex-main-100-preview.png)
-**infex-main-100** — created with **infex-from-zero.py**
+![the quick fox](images/infex-main-100-preview.png)
+**infex-main-100** — created with `infex-from-zero.py`
 
 ## License & Usage
 
@@ -26,7 +26,9 @@
 
 ## Contact
 
-For questions or permissions, please reach out.
+For questions or permissions, feel free to reach out via Telegram: [@samine825](https://t.me/samine825)
+
+---
 
 ---
 
