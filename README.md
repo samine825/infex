@@ -26,7 +26,7 @@ fonts/**infex-main-100.ttf** — created with `infex-from-zero.py`
 
 ## Contact
 
-For questions or permissions, feel free to reach out via Telegram: [@samine825](https://t.me/samine825)
+For questions or permissions, feel free to reach out via Telegram: [@samine825](https://telegram.me/samine825)
 
 ---
 
