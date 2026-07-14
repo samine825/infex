@@ -10,10 +10,10 @@
 # Examples
 
 ![the quick fox](images/infex-16px-preview.png)
-**infex-16px** — created with `infex-from-6png.py`
+fonts/**infex-16px.ttf** — created with `infex-from-6png.py`
 
 ![the quick fox](images/infex-main-100-preview.png)
-**infex-main-100** — created with `infex-from-zero.py`
+fonts/**infex-main-100.ttf** — created with `infex-from-zero.py`
 
 ## License & Usage
 
